@@ -43,6 +43,6 @@ with tf.Session(mac1) as sess:
 	im1 = im1.reshape((1, 784))
 	im1[0] = (im1[0]*1.0 )/max(im1[0]*1.0)* 255.0
 	im1 = (255.0-im1)/255.0
-
-	result=sess.run(y,feed_dict={x: im1})
-	print(result)
+	for i in range(1):
+		result=sess.run(y,feed_dict={x: im1})
+		print(result)

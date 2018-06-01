@@ -38,3 +38,7 @@
 
 
 ### Install Kubernetes(a docker management project)
+
+
+### Important Links
+> 1.(Distributed Tensorflow)[https://learningtensorflow.com/lesson11/]
