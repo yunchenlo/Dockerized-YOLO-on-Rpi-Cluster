@@ -11,7 +11,8 @@
 > ```
 > 	$ ssh user@hostname
 > ```
-> 4. Build the Docker Container yourself or pull from my pre-built one on Rpi
+> 4. Install Docker on Rpi [Link](https://blog.hypriot.com/post/run-docker-rpi3-with-wifi/)
+> 5. Build the Docker Container yourself or pull from my pre-built one on Rpi
 > ```
 > $ sudo docker run -it yclo/raspbian-tensorflow-opencv3:first //directly run container
 > ```
