@@ -41,4 +41,4 @@
 
 
 ### Important Links
-> 1.(Distributed Tensorflow)[https://learningtensorflow.com/lesson11/]
+> 1.[Distributed Tensorflow](https://learningtensorflow.com/lesson11/)

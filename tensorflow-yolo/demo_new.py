@@ -7,6 +7,16 @@ import tensorflow as tf
 import cv2
 import numpy as np
 
+# cluster network hostname & port
+macc1="localhost:2222"
+macc2="localhost:2223"
+
+cluster = tf.train.ClusterSpec({"local":[macc1,macc2]})
+
+mac1="grpc://localhost:2222"
+mac2="grpc://localhost:2223"
+inputsess=[mac1, mac2]
+
 classes_name =  ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train","tvmonitor"]
 
 def process_predicts(predicts):
@@ -254,7 +264,7 @@ saver = tf.train.Saver()
 print("model constructed!")
 
 sess = tf.Session()
-np_img = cv2.imread('cat.jpg')
+np_img = cv2.imread('plane.jpg')
 resized_img = cv2.resize(np_img, (448, 448))
 np_img = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
 
@@ -272,5 +282,5 @@ xmin, ymin, xmax, ymax, class_num = process_predicts(np_predict)
 class_name = classes_name[class_num]
 cv2.rectangle(resized_img, (int(xmin), int(ymin)), (int(xmax), int(ymax)), (0, 0, 255))
 cv2.putText(resized_img, class_name, (int(xmin), int(ymin)), 2, 1.5, (0, 0, 255))
-cv2.imwrite('cat_out.jpg', resized_img)
+cv2.imwrite('plane_out.jpg', resized_img)
 sess.close()
