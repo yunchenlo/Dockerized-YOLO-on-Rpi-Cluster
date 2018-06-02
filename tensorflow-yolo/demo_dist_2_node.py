@@ -67,7 +67,7 @@ boxes_per_cell = 2
 image_size = 448
 
 
-with tf.device("/job:local/task:1"):
+with tf.device("/job:local/task:0"):
 	''' Input Image '''
 	image = tf.placeholder(tf.float32, (1, 448, 448, 3))
 	''' CONV 1 '''
@@ -155,7 +155,7 @@ with tf.device("/job:local/task:1"):
 	maxpool5 = tf.nn.max_pool(conv5, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1],
 	                  padding='SAME')
 
-#with tf.device("/job:local/task:1"):
+with tf.device("/job:local/task:1"):
 	''' CONV 6 '''
 	with tf.variable_scope("conv6") as scope:
 		kernel = tf.Variable(tf.zeros([3, 3, 256, 512]), name = "weights")

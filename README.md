@@ -32,13 +32,25 @@
 #### After(cat_out.jpg)
  <img src="https://i.imgur.com/t9Y7hxY.jpg" width="200">
 
-### Break YOLO into part
+### Break YOLO into parts
 
-> 1.
-
+> 1. Form a new file demo_new.py, which contains session and model graph definition
+> 2. Write demo_dist_2_node.py file, which will be runned on multiple machine
+> 3. If you want to test locally, open 3 terminals, and enter tensorflow-yolo folder!
+> 
+> ```
+> [terminal 1]$ python local_server.py 0 // for first worker to listen for running request
+> [terminal 2]$ python local_server.py 1 // for second worker to listen for running request
+> [terminal 3]$ python demo_dist_2_node.py // run a session and ask two workers to do their Job 
+> ```
 
 ### Install Kubernetes(a docker management project)
 
 
+### Write Kubernetes Orchestration File
+
+
 ### Important Links
-> 1.[Distributed Tensorflow](https://learningtensorflow.com/lesson11/)
+> 1. [Distributed Tensorflow](https://learningtensorflow.com/lesson11/)
+> 2. [YOLO Source](https://github.com/nilboy/tensorflow-yolo)
+> 3. [Distributed Tensorflow](https://github.com/nesl/Distributed_TensorFlow)
