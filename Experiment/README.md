@@ -54,3 +54,5 @@
 > 1. [Distributed Tensorflow](https://learningtensorflow.com/lesson11/)
 > 2. [YOLO Source](https://github.com/nilboy/tensorflow-yolo)
 > 3. [Distributed Tensorflow](https://github.com/nesl/Distributed_TensorFlow)
+> 4. [Minikube Tutorial](https://kubernetes.io/docs/tutorials/hello-minikube/)
+> 5. [rpi kubernetes install](https://kubernetes.io/blog/2015/12/creating-raspberry-pi-cluster-running/)
