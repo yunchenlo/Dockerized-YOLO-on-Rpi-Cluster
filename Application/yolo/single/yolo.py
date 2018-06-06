@@ -6,6 +6,7 @@ from yolo_tiny_net import YoloTinyNet
 import tensorflow as tf 
 import cv2
 import numpy as np
+import time
 
 classes_name =  ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train","tvmonitor"]
 
@@ -81,7 +82,7 @@ np_predict = sess.run(predicts, feed_dict={image: np_img})
 xmin, ymin, xmax, ymax, class_num = process_predicts(np_predict)
 class_name = classes_name[class_num]
 
-print ("Object Detection: " + classes_name[class_num])
+print ("Object Detection: " + classes_name[class_num] + "Time Stamp: "+ str(time.time()))
 
 cv2.rectangle(resized_img, (int(xmin), int(ymin)), (int(xmax), int(ymax)), (0, 0, 255))
 cv2.putText(resized_img, class_name, (int(xmin), int(ymin)), 2, 1.5, (0, 0, 255))
