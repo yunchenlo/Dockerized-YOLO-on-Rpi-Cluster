@@ -14,7 +14,7 @@ spec:
     ports:
     - containerPort: {{ .Values.operator.op1.port }}
       hostPort: {{ .Values.operator.op1.port }}
-    command: ["/bin/bash","-c","python worker.py --worker_hosts={{ .Values.operator.op0.ip }}:{{ .Values.operator.op0.port }},{{ .Values.operator.op1.ip }}:{{ .Values.operator.op1.port }},{{ .Values.operator.op2.ip }}:{{ .Values.operator.op2.port }} --job_name=worker --task_index=1"]
+    command: ["/bin/bash","-c","python3 worker.py --worker_hosts={{ .Values.operator.op0.ip }}:{{ .Values.operator.op0.port }},{{ .Values.operator.op1.ip }}:{{ .Values.operator.op1.port }},{{ .Values.operator.op2.ip }}:{{ .Values.operator.op2.port }} --job_name=worker --task_index=1"]
     securityContext:
       privileged: true
   nodeSelector:
