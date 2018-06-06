@@ -85,6 +85,7 @@ def build_model():
 
 
 def fully_connected_layer():
+  global count
   while True:
     conv_output, resized_img = sess.run(dequeue_conv)
     predict_result = sess.run (predict, feed_dict={temp_conv: conv_output,})

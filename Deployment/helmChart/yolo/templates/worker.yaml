@@ -6,7 +6,7 @@ spec:
   #restartPolicy: Never
   containers:
   - name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op1-{{ .Values.operator.op1.device.hostname }}
-    image: yclo/tensorflow-yolo-opencv:third
+    image: yclo/tensorflow-yolo-opencv:fourth
     resources:
       requests:
         memory: "{{ .Values.operator.op1.resource.mem }}M"
@@ -30,7 +30,7 @@ spec:
   #restartPolicy: Never
   containers:
   - name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op2-{{ .Values.operator.op2.device.hostname }}
-    image: yclo/tensorflow-yolo-opencv:third
+    image: yclo/tensorflow-yolo-opencv:fourth
     resources:
       requests:
         memory: "{{ .Values.operator.op2.resource.mem }}M"

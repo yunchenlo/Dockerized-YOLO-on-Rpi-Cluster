@@ -88,14 +88,14 @@ def fully_connected_layer():
 
     xmin, ymin, xmax, ymax, class_num = process_conv(predict_result)
     class_name = classes_name[class_num]
-    print ("Object Detection: " + classes_name[class_num])
+    print ("Object Detection: " + classes_name[class_num]+ "Time Stamp: " + str(time.time()))
 
     cv2.rectangle(resized_img, (int(xmin), int(ymin)), (int(xmax), int(ymax)), (0, 0, 255))
     cv2.putText(resized_img, class_name, (int(xmin), int(ymin)), 2, 1.5, (0, 0, 255))
     cv2.imwrite('out.jpg', resized_img)
 
     finished_frame = finished_frame +1
-    #print (finished_frame)
+    print (finished_frame)
 
 
 if __name__ == "__main__":
