@@ -94,7 +94,7 @@ def fully_connected_layer():
     #publish.single("lab/yolo", classes_name[class_num], hostname=BROKER)
     message = '{"request":{"number":%s,"application":"yolo"},"output":{"timestamp":%s,"result":"%s"}}' % (os.environ['REQUEST'],time.time(),classes_name[class_num])
     publish.single("lab/yolo", message, hostname=BROKER)
-    print ("Object Detection: " + classes_name[class_num])
+    print ("Object Detection: " + classes_name[class_num] + " Time Stamp: " + time.time())
 
     cv2.rectangle(resized_img, (int(xmin), int(ymin)), (int(xmax), int(ymax)), (0, 0, 255))
     cv2.putText(resized_img, class_name, (int(xmin), int(ymin)), 2, 1.5, (0, 0, 255))
