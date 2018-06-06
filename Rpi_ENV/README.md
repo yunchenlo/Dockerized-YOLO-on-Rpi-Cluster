@@ -46,6 +46,11 @@ $ kubectl edit daemonset kube-proxy --namespace=kube-system
 > and follow the steps to create a new proxy yaml file
 [Link](https://gist.github.com/squidpickles/dda268d9a444c600418da5e1641239af)
 
+### Server
+### Fire the master
+```
+$ 
+```
 ### Set up Helm for Rpi
 ```
 $ kubectl create serviceaccount --namespace kube-system tiller
