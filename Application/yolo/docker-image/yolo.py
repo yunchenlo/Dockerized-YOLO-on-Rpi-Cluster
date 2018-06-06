@@ -2,22 +2,22 @@ import sys
 
 sys.path.append('./')
 
-from yolo_tiny_net_queue import YoloTinyNet 
-import tensorflow as tf 
+from yolo_tiny_net import YoloTinyNet
+import tensorflow as tf
 import cv2
 import numpy as np
 import threading
 import random
 import time
+import os
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 
+BROKER = os.environ['BROKER']
+PERIOD = os.environ['PERIOD']
 
-images_name = ["aeroplane.jpg","bicycle.jpg","cat.jpg","dog.jpg","person.jpg","car.jpg","bus.jpg"]
-classes_name =  ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train","tvmonitor"]
+classes_name =  ["airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining-table", "dog", "horse", "motorcycle", "person", "potted-plant", "sheep", "sofa", "train","tv-monitor"]
 
-
-finished_frame = 0
 def process_conv(conv):
   p_classes = conv[0, :, :, 0:20]
   C = conv[0, :, :, 20:22]
@@ -59,7 +59,7 @@ def process_conv(conv):
 
 def read_image():
   while True:
-    np_img = cv2.imread("images/" + random.choice (images_name))
+    np_img = cv2.imread("images/" + random.choice (classes_name) + ".jpg")
     resized_img = cv2.resize(np_img, (448, 448))
 
     np_img = cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
@@ -69,12 +69,12 @@ def read_image():
 
     sess.run(enqueue_image, feed_dict={np_img_input: np_img,
                                     resized_img_input: resized_img})
-    #time.sleep(2)
+    time.sleep( float(PERIOD) )
 
 
 def build_model():
-  while True: 
-    np_img, resized_img = sess.run(dequeue_image) 
+  while True:
+    np_img, resized_img = sess.run(dequeue_image)
 
     np_predict = sess.run(conv, feed_dict={image: np_img})
 
@@ -83,27 +83,28 @@ def build_model():
 
 
 def fully_connected_layer():
-  global finished_frame
   while True:
-    conv_output, resized_img = sess.run(dequeue_conv) 
+    conv_output, resized_img = sess.run(dequeue_conv)
     predict_result = sess.run (predict, feed_dict={temp_conv: conv_output,})
 
 
     xmin, ymin, xmax, ymax, class_num = process_conv(predict_result)
     class_name = classes_name[class_num]
+
+    #publish.single("lab/yolo", classes_name[class_num], hostname=BROKER)
+    message = '{"request":{"number":%s,"application":"yolo"},"output":{"timestamp":%s,"result":"%s"}}' % (os.environ['REQUEST'],time.time(),classes_name[class_num])
+    publish.single("lab/yolo", message, hostname=BROKER)
     print ("Object Detection: " + classes_name[class_num])
 
     cv2.rectangle(resized_img, (int(xmin), int(ymin)), (int(xmax), int(ymax)), (0, 0, 255))
     cv2.putText(resized_img, class_name, (int(xmin), int(ymin)), 2, 1.5, (0, 0, 255))
     cv2.imwrite('out.jpg', resized_img)
 
-    finished_frame = finished_frame +1
-    #print (finished_frame)
 
 
 if __name__ == "__main__":
 
-  common_params = {'image_size': 448, 'num_classes': 20, 
+  common_params = {'image_size': 448, 'num_classes': 20,
                   'batch_size':1}
   net_params = {'cell_size': 7, 'boxes_per_cell':2, 'weight_decay': 0.0005}
   net = YoloTinyNet(common_params, net_params, test=True)
@@ -129,16 +130,16 @@ if __name__ == "__main__":
   dequeue_conv = convQueue.dequeue()
 
 
-  saver = tf.train.Saver(net.trainable_collection)
+  saver = tf.train.Saver()
 
-  with tf.Session() as sess:
 
+  with tf.Session("grpc://" + os.environ['MASTER_IP'] + ":" + os.environ['MASTER_PORT']) as sess:
     saver.restore(sess, 'models/pretrain/yolo_tiny.ckpt')
 
     a = threading.Thread(target=read_image)
     b = threading.Thread(target=build_model)
     c = threading.Thread(target=fully_connected_layer)
-    
+
     a.start()
     b.start()
     c.start()
