@@ -6,7 +6,7 @@ spec:
   #restartPolicy: Never
   containers:
   - name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op0-{{ .Values.operator.op0.device.hostname }}
-    image: wakeup706/tensorflow-yolo:{{ .Values.operator.op0.device.type }}-master-1.1
+    image: yclo/tensorflow-yolo-opencv:first
     resources:
       requests:
         memory: "{{ .Values.operator.op0.resource.mem }}M"
