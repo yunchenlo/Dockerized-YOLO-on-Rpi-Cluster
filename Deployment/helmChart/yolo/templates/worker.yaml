@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op1-{{ .Values.operator.op1.device.hostname }}
+spec:
+  #restartPolicy: Never
+  containers:
+  - name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op1-{{ .Values.operator.op1.device.hostname }}
+    image: wakeup706/tensorflow-yolo:{{ .Values.operator.op1.device.type }}-worker
+    resources:
+      requests:
+        memory: "{{ .Values.operator.op1.resource.mem }}M"
+        cpu: "{{ .Values.operator.op1.resource.cpu }}m"
+    ports:
+    - containerPort: {{ .Values.operator.op1.port }}
+      hostPort: {{ .Values.operator.op1.port }}
+    command: ["/bin/bash","-c","python worker.py --worker_hosts={{ .Values.operator.op0.ip }}:{{ .Values.operator.op0.port }},{{ .Values.operator.op1.ip }}:{{ .Values.operator.op1.port }},{{ .Values.operator.op2.ip }}:{{ .Values.operator.op2.port }} --job_name=worker --task_index=1"]
+    securityContext:
+      privileged: true
+  nodeSelector:
+    device: "{{ .Values.operator.op1.device.label }}"
+
+------
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op2-{{ .Values.operator.op2.device.hostname }}
+spec:
+  #restartPolicy: Never
+  containers:
+  - name: req{{ .Values.name.request }}-app{{ .Values.name.application }}-op2-{{ .Values.operator.op2.device.hostname }}
+    image: wakeup706/tensorflow-yolo:{{ .Values.operator.op2.device.type }}-worker
+    resources:
+      requests:
+        memory: "{{ .Values.operator.op2.resource.mem }}M"
+        cpu: "{{ .Values.operator.op2.resource.cpu }}m"
+    ports:
+    - containerPort: {{ .Values.operator.op2.port }}
+      hostPort: {{ .Values.operator.op2.port }}
+    command: ["/bin/bash","-c","python worker.py --worker_hosts={{ .Values.operator.op0.ip }}:{{ .Values.operator.op0.port }},{{ .Values.operator.op1.ip }}:{{ .Values.operator.op1.port }},{{ .Values.operator.op2.ip }}:{{ .Values.operator.op2.port }} --job_name=worker --task_index=2"]
+    securityContext:
+      privileged: true
+  nodeSelector:
+    device: "{{ .Values.operator.op2.device.label }}"

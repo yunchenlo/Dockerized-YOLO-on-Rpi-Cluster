@@ -1,0 +1,38 @@
+name:
+  request: "100"
+  application: "100"
+period: "PERIOD"
+mqtt:
+  brokerIP: "BROKER_IP"
+  topic: "MQTT_TOPIC"
+operator:
+  op0:
+    ip: "OP0_IP"
+    port: "1234"
+    device:
+      type: "OP0_DEVICE_TYPE"
+      label: "OP0_DEVICE_LABEL"
+      hostname: "OP0_DEVICE_HOSTNAME"
+    resource:
+      cpu: "OP0_RESOURCE_CPU"
+      mem: "OP0_RESOURCE_MEM"
+  op1:
+    ip: "OP1_IP"
+    port: "1111"
+    device:
+      type: "OP1_DEVICE_TYPE"
+      label: "OP1_DEVICE_LABEL"
+      hostname: "OP1_DEVICE_HOSTNAME"
+    resource:
+      cpu: "OP1_RESOURCE_CPU"
+      mem: "OP1_RESOURCE_MEM"
+  op2:
+    ip: "OP2_IP"
+    port: "2222"
+    device:
+      type: "OP2_DEVICE_TYPE"
+      label: "OP2_DEVICE_LABEL"
+      hostname: "OP2_DEVICE_HOSTNAME"
+      resource:
+        cpu: "OP2_RESOURCE_CPU"
+        mem: "OP2_RESOURCE_MEM"
