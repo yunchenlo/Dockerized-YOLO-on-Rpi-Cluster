@@ -2,3 +2,4 @@
 Application/yolo/single/models/pretrain/yolo_tiny.ckpt
 Application/yolo/docker-image/models/pretrain/yolo_tiny.ckpt
 Application/yolo/distributed/models/pretrain/yolo_tiny.ckpt
+.DS_Store
