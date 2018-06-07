@@ -1,0 +1,47 @@
+root@req0-app1-op0-yclo-pi-1:/app# python3 yolo.py
+# 1
+Object Detection: dog Time Stamp: 1528288551.7502007
+# 2
+Object Detection: airplane Time Stamp: 1528288553.899012
+# 3
+Object Detection: tv-monitor Time Stamp: 1528288556.9400709
+# 4
+Object Detection: bottle Time Stamp: 1528288559.5888953
+# 5
+Object Detection: potted-plant Time Stamp: 1528288562.3388429
+# 6
+Object Detection: sheep Time Stamp: 1528288565.1807
+# 7
+Object Detection: motorcycle Time Stamp: 1528288568.384124
+# 8
+Object Detection: bird Time Stamp: 1528288571.1390781
+# 9
+Object Detection: dog Time Stamp: 1528288573.6288784
+# 10
+Object Detection: horse Time Stamp: 1528288576.5427234
+# 11
+Object Detection: bird Time Stamp: 1528288579.0798078
+# 12
+Object Detection: airplane Time Stamp: 1528288582.0624824
+# 13
+Object Detection: car Time Stamp: 1528288584.8750086
+# 14
+Object Detection: sheep Time Stamp: 1528288587.4085793
+# 15
+Object Detection: boat Time Stamp: 1528288590.4742074
+# 16
+Object Detection: sheep Time Stamp: 1528288593.0154676
+# 17
+Object Detection: bird Time Stamp: 1528288595.8647928
+# 18
+Object Detection: bus Time Stamp: 1528288598.4094145
+# 19
+Object Detection: dining-table Time Stamp: 1528288601.6778705
+# 20
+Object Detection: boat Time Stamp: 1528288604.1103687
+# 21
+Object Detection: car Time Stamp: 1528288606.7199068
+# 22
+Object Detection: sofa Time Stamp: 1528288609.359208
+# 23
+Object Detection: cow Time Stamp: 1528288612.1291301
