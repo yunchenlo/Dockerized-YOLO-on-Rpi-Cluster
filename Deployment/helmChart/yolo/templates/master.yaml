@@ -30,8 +30,10 @@ spec:
       value: "{{ .Values.name.request }}"
     # no ps worker in tensorflow, so the value start from 1
     - name : OP0
-      value: "1"
+      value: "0"
     - name : OP1
+      value: "1"
+    - name : OP2
       value: "2"
   nodeSelector:
     device: "{{ .Values.operator.op0.device.label }}"
