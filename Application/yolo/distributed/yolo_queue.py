@@ -129,7 +129,7 @@ if __name__ == "__main__":
   saver = tf.train.Saver(net.trainable_collection)
 
 
-  with tf.Session("grpc://127.0.0.1:2223") as sess:
+  with tf.Session("grpc://127.0.0.1:8060") as sess:
     saver.restore(sess, 'models/pretrain/yolo_tiny.ckpt')
 
     a = threading.Thread(target=read_image)

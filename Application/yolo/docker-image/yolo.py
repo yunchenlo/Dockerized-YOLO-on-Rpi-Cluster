@@ -10,11 +10,9 @@ import threading
 import random
 import time
 import os
-import paho.mqtt.client as mqtt
-import paho.mqtt.publish as publish
 
-BROKER = os.environ['BROKER']
-PERIOD = os.environ['PERIOD']
+#PERIOD = os.environ['PERIOD']
+PERIOD = 0
 
 classes_name =  ["airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining-table", "dog", "horse", "motorcycle", "person", "potted-plant", "sheep", "sofa", "train","tv-monitor"]
 
@@ -94,9 +92,6 @@ def fully_connected_layer():
     xmin, ymin, xmax, ymax, class_num = process_conv(predict_result)
     class_name = classes_name[class_num]
 
-    #publish.single("lab/yolo", classes_name[class_num], hostname=BROKER)
-    message = '{"request":{"number":%s,"application":"yolo"},"output":{"timestamp":%s,"result":"%s"}}' % (os.environ['REQUEST'],time.time(),classes_name[class_num])
-    publish.single("lab/yolo", message, hostname=BROKER)
     count += 1
     print("# " + str(count))
     print ("Object Detection: " + classes_name[class_num] + " Time Stamp: " + str(time.time()))
@@ -137,8 +132,8 @@ if __name__ == "__main__":
 
   saver = tf.train.Saver()
 
-
-  with tf.Session("grpc://" + os.environ['MASTER_IP'] + ":" + os.environ['MASTER_PORT']) as sess:
+  with tf.Session("grpc://127.0.0.1:8060") as sess:
+  #with tf.Session("grpc://" + os.environ['MASTER_IP'] + ":" + os.environ['MASTER_PORT']) as sess:
     saver.restore(sess, 'models/pretrain/yolo_tiny.ckpt')
 
     a = threading.Thread(target=read_image)
