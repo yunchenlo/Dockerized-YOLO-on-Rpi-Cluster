@@ -40,8 +40,8 @@ class YoloTinyNet(Net):
     Returns:
       predicts: 4-D tensor [batch_size, cell_size, cell_size, num_classes + 5 * boxes_per_cell]
     """
-    #with tf.device("/job:worker/task:"+os.environ['OP1']):
-    with tf.device("/job:worker/task:1"):
+    with tf.device("/job:worker/task:"+os.environ['OP1']):
+    #with tf.device("/job:worker/task:1"):
         conv_num = 1
 
         temp_conv = self.conv2d('conv' + str(conv_num), images, [3, 3, 3, 16], stride=1)
@@ -64,8 +64,8 @@ class YoloTinyNet(Net):
   #Fully connected layer
   def connected_layer(self, temp_conv):
 
-    #with tf.device("/job:worker/task:"+os.environ['OP2']):
-    with tf.device("/job:worker/task:2"):
+    with tf.device("/job:worker/task:"+os.environ['OP2']):
+    #with tf.device("/job:worker/task:2"):
         conv_num = 4
         
         temp_conv = self.conv2d('conv' + str(conv_num), temp_conv, [3, 3, 64, 128], stride=1)

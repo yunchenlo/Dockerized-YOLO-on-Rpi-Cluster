@@ -11,8 +11,8 @@ import random
 import time
 import os
 
-#PERIOD = os.environ['PERIOD']
-PERIOD = 1
+PERIOD = os.environ['PERIOD']
+#PERIOD = 1
 
 classes_name =  ["airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining-table", "dog", "horse", "motorcycle", "person", "potted-plant", "sheep", "sofa", "train","tv-monitor"]
 
@@ -133,8 +133,8 @@ if __name__ == "__main__":
   saver = tf.train.Saver()
 
 
-  #with tf.Session("grpc://" + os.environ['MASTER_IP'] + ":" + os.environ['MASTER_PORT']) as sess:
-  with tf.Session("grpc://127.0.0.1:8060") as sess:
+  with tf.Session("grpc://" + os.environ['MASTER_IP'] + ":" + os.environ['MASTER_PORT']) as sess:
+  #with tf.Session("grpc://127.0.0.1:8060") as sess:
     saver.restore(sess, 'models/pretrain/yolo_tiny.ckpt')
 
     a = threading.Thread(target=read_image)
