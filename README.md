@@ -4,6 +4,8 @@
 ## Description
 > Reference Implementation of paper **"Distributed Analytics in Fog Computing Platforms Using TensorFlow and Kubernetes"**
 
+> The below photo is credited to the author of the paper
+
 ![alt text](https://i.imgur.com/qMFnnzB.png)
 
 ## Dependencies
