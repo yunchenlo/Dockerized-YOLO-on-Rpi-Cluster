@@ -1,0 +1,25 @@
+root@req1-app1-op0-yclo-pi-1:/app# python3 yolo.py 
+# 1
+Object Detection: horse Time Stamp: 1528424622.384986
+# 2
+Object Detection: chair Time Stamp: 1528424625.7096937
+# 3
+Object Detection: sheep Time Stamp: 1528424628.7586546
+# 4
+Object Detection: train Time Stamp: 1528424631.8396535
+# 5
+Object Detection: dog Time Stamp: 1528424634.5373764
+# 6
+Object Detection: cat Time Stamp: 1528424638.6514213
+# 7
+Object Detection: person Time Stamp: 1528424642.621801
+# 8
+Object Detection: car Time Stamp: 1528424645.9171429
+# 9
+Object Detection: motorcycle Time Stamp: 1528424651.1107097
+# 10
+Object Detection: boat Time Stamp: 1528424660.0302258
+# 11
+Object Detection: bicycle Time Stamp: 1528424663.57788
+# 12
+Object Detection: motorcycle Time Stamp: 1528424668.0593562
