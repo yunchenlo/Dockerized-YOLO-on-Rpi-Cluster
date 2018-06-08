@@ -38,6 +38,11 @@
 > 
 > > contains several files that I have experimented before
 
+## Results
+![](https://i.imgur.com/r0wp9jH.png)
+> Because I use a router shared all wifi device, therefore the Internet Overhead is big!
+> In the results shown above I just doubled the CPU & Memory Resources that each operator could use on the same Rpi to simulate the 2 devices speed.
+
 ## References
 1. [tensorflow YOLO implementation](https://github.com/nilboy/tensorflow-yolo )
 2. [How to partition YOLO](https://github.com/WakeupTsai/tensorflow-applications)
