@@ -40,7 +40,7 @@
 
 ## Results
 ![](https://i.imgur.com/r0wp9jH.png)
-> Because I use a router shared all wifi device, therefore the Internet Overhead is big!
+> Because I use a router shared all wifi device in my Lab, therefore the Internet Overhead is big!
 > In the results shown above I just doubled the CPU & Memory Resources that each operator could use on the same Rpi to simulate the 2 devices speed.
 
 ## References
